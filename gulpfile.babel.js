@@ -11,7 +11,7 @@ import fs from "fs";
 import webpackStream from "webpack-stream";
 import webpack2 from "webpack";
 import named from "vinyl-named";
-import ghPages from "gulp-gh-pages";
+import ghPages from "gh-pages";
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -180,4 +180,8 @@ function watch() {
 }
 
 // Deploy to GitHub Pages
-gulp.task("deploy", () => gulp.src("./dist/**/*").pipe(ghPages()));
+gulp.task("deploy", () =>
+  ghPages.publish("dist", function(err) {
+    console.log(err);
+  })
+);

@@ -1,0 +1,43 @@
+.bottom-el-loader {
+  @include bottom-el;
+  z-index: 2;
+
+  .emoji-element {
+    display: inline-block;
+    transform: translateY(50%);
+    opacity: 0;
+    transition: transform 0.6s, opacity 0.6s;
+    .is-loading & {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .is-loaded & {
+      transform: translateY(-50%);
+      opacity: 0;
+    }
+  }
+
+  .has-dots span {
+    animation-name: blink;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+  }
+  .has-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .has-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  @keyframes blink {
+    0% {
+      opacity: 0.2;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.2;
+    }
+  }
+}

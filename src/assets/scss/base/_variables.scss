@@ -1,0 +1,53 @@
+/*
+ =======================
+Colors
+ =======================
+ */
+
+ $bg_color: #1C1A1C;
+ $accent_color: #6cdac1;
+ $text_color: #b1b1b1;
+ $link_color: #b1b1b1;
+ $link_hover_color: #dfdfdf;
+
+ /*
+ =======================
+Media Queries
+ =======================
+ */
+
+@mixin breakpoint($point) {
+  @if $point == medium {
+    @media (min-width: 641px) {
+      @content;
+    }
+  } @else if $point == large {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  } @else if $point == xlarge {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  } @else if $point == xxlarge {
+    @media (min-width: 1440px) {
+      @content;
+    }
+  } @else if $point == xxxlarge {
+    @media (min-width: 1600px) {
+      @content;
+    }
+  } @else if $point == untilmedium {
+    @media (max-width: 639px) {
+      @content;
+    }
+  } @else if $point == untillarge {
+    @media (max-width: 1023px) {
+      @content;
+    }
+  } @else if $point == untilxlarge {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+}

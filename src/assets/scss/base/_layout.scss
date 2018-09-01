@@ -1,0 +1,92 @@
+/* 
+=======================
+Layout
+======================= 
+*/
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background-color: $bg_color;
+  color: $text_color;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-track {
+  display: none !important;
+}
+
+.gradient {
+  pointer-events: none;
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    hsla(0, 0%, 0%, 0) 0%,
+    hsla(0, 0%, 0%, 0.022) 8.5%,
+    hsla(0, 0%, 0%, 0.054) 17.2%,
+    hsla(0, 0%, 0%, 0.095) 26%,
+    hsla(0, 0%, 0%, 0.146) 34.7%,
+    hsla(0, 0%, 0%, 0.204) 43.3%,
+    hsla(0, 0%, 0%, 0.268) 51.6%,
+    hsla(0, 0%, 0%, 0.339) 59.6%,
+    hsla(0, 0%, 0%, 0.415) 67.2%,
+    hsla(0, 0%, 0%, 0.494) 74.3%,
+    hsla(0, 0%, 0%, 0.576) 80.7%,
+    hsla(0, 0%, 0%, 0.661) 86.4%,
+    hsla(0, 0%, 0%, 0.746) 91.3%,
+    hsla(0, 0%, 0%, 0.832) 95.3%,
+    hsla(0, 0%, 0%, 0.917) 98.2%,
+    hsl(0, 0%, 0%) 100%
+  );
+
+  height: 30vh;
+  @include breakpoint(medium) {
+    height: 30vh;
+  }
+  @include breakpoint(large) {
+    height: 40vh;
+  }
+  .safari & {
+    height: 30vh;
+  }
+}
+
+@mixin bottom-el {
+  position: fixed;
+  bottom: 0rem;
+  left: 0;
+  width: 100%;
+  padding: 0 1rem 1rem;
+  text-align: center;
+
+  @include breakpoint(medium) {
+    padding: 0 1.5rem 1rem;
+    text-align: left;
+  }
+  @include breakpoint(large) {
+    padding: 0 2rem 2rem;
+  }
+  @include breakpoint(xlarge) {
+    font-size: 1em;
+    padding: 0 3rem 3rem;
+  }
+}

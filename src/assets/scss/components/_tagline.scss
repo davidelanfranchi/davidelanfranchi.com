@@ -1,0 +1,336 @@
+.tagline-scroller {
+  position: relative;
+  &::before {
+    content: "";
+
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: url("/assets/img/noise.gif");
+
+    animation: 1s infinite noise;
+
+    pointer-events: none;
+
+    opacity: 0.02;
+  }
+}
+@keyframes noise {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+
+  10% {
+    background-position: -5% -10%;
+  }
+
+  20% {
+    background-position: -15% 5%;
+  }
+
+  30% {
+    background-position: 7% -25%;
+  }
+
+  40% {
+    background-position: 20% 25%;
+  }
+
+  50% {
+    background-position: -25% 10%;
+  }
+
+  60% {
+    background-position: 15% 5%;
+  }
+
+  70% {
+    background-position: 0% 15%;
+  }
+
+  80% {
+    background-position: 25% 35%;
+  }
+
+  90% {
+    background-position: -10% 10%;
+  }
+}
+
+.tagline-scroller[data-scrollbar="true"] {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.tagline-container {
+  padding: 0 1rem;
+  @include breakpoint(medium) {
+    padding: 0 1.5rem;
+  }
+  @include breakpoint(large) {
+    padding: 0 2rem;
+  }
+
+  opacity: 0;
+  transform: translateY(10vh);
+  transition: transform 1s, opacity 1s;
+  .is-loading & {
+  }
+  .is-loaded & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tagline {
+  display: block;
+}
+
+.tagline-heading {
+  @include cool_font;
+  color: $accent_color;
+  text-align: right;
+  line-height: 0.8;
+
+  font-size: 30vw;
+  @include breakpoint(xxlarge) {
+    font-size: 25vw;
+  }
+  @include breakpoint(xxxlarge) {
+    font-size: 28vw;
+  }
+
+  margin: 0;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  @include breakpoint(medium) {
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+  }
+  @include breakpoint(large) {
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+  }
+  @include breakpoint(xxlarge) {
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+  }
+
+  span {
+    display: block;
+  }
+  span.-outline {
+    color: transparent;
+    -webkit-text-stroke: 0.5px$accent_color;
+    text-stroke: 0.5px $accent_color;
+    @include breakpoint(large) {
+      -webkit-text-stroke: 1px $accent_color;
+    }
+  }
+
+  &.-clone {
+    color: white;
+    &__line.-outline {
+      color: transparent;
+      -webkit-text-stroke: 0.5px white;
+      text-stroke: 0.5px white;
+      @include breakpoint(large) {
+        -webkit-text-stroke: 1px white;
+      }
+    }
+  }
+}
+
+.tagline-content {
+  width: 100%;
+  max-width: 90%;
+  margin-left: auto;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  @include breakpoint(medium) {
+    flex-direction: row;
+    max-width: 90%;
+    text-align: left;
+  }
+  @include breakpoint(large) {
+    max-width: 90%;
+  }
+  @include breakpoint(xlarge) {
+    max-width: 80%;
+  }
+  @include breakpoint(xxxlarge) {
+    max-width: 80%;
+  }
+  .col {
+    flex: 1;
+
+    &.text {
+      max-width: 600px;
+    }
+    &.image {
+      flex-shrink: 1;
+      @include breakpoint(medium) {
+        max-width: 50%;
+        padding-left: 3rem;
+        padding-right: 3rem;
+      }
+      @include breakpoint(large) {
+        padding-left: 5rem;
+        padding-right: 5rem;
+      }
+      @include breakpoint(xxxlarge) {
+        padding-left: 8rem;
+        padding-right: 8rem;
+      }
+    }
+  }
+
+  p {
+    margin-top: 0;
+    line-height: 1.5;
+    font-size: 1.1em;
+    @include breakpoint(large) {
+      font-size: 1.2em;
+    }
+    @include breakpoint(xlarge) {
+      font-size: 1.6em;
+    }
+    @include breakpoint(xxlarge) {
+      font-size: 1.8em;
+    }
+  }
+
+  .profile-description {
+    margin-bottom: 3.5em;
+  }
+  .tldr-title {
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: #808080;
+    margin-bottom: 2.5em;
+    @include breakpoint(medium) {
+      margin-bottom: 1.5em;
+    }
+  }
+  .tldr-content {
+    margin-bottom: 3.5em;
+    @include breakpoint(medium) {
+      margin-bottom: 1.5em;
+    }
+    a {
+      display: inline-block;
+      position: relative;
+      text-decoration: none;
+      padding: 0.5em 0;
+      color: $accent_color;
+      &:hover {
+        color: $accent_color;
+      }
+
+      .touch & {
+        &:before {
+          display: block;
+          content: "";
+          width: 5rem;
+          height: 5rem;
+          opacity: 0.4;
+          @include breakpoint(medium) {
+            width: 6rem;
+            height: 6rem;
+          }
+          @include breakpoint(xlarge) {
+            width: 9rem;
+            height: 9rem;
+            opacity: 0.2;
+          }
+          background-image: url("/assets/img/arrow.svg");
+          background-size: cover;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate3d(-50%, -50%, 0);
+          z-index: 0;
+        }
+      }
+    }
+  }
+
+  .profile-links {
+    margin-bottom: 3.5em;
+    font-size: 0.8em;
+
+    span {
+      // display: block;
+      margin-bottom: 1em;
+      @include breakpoint(large) {
+        margin-bottom: 0;
+        display: inline-block;
+        margin-right: 0.6em;
+      }
+    }
+    a {
+      display: inline-block;
+      margin-right: 0.3em;
+    }
+  }
+
+  .profile-picture-wrapper {
+    position: relative;
+    &::before {
+      content: "";
+
+      z-index: -1;
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+
+      width: 100%;
+      height: 100%;
+
+      background-color: black;
+      opacity: 0.5;
+    }
+    &::after {
+      content: "";
+
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      background: url("/assets/img/noise.gif");
+
+      animation: 1s infinite noise;
+
+      pointer-events: none;
+
+      opacity: 0.05;
+    }
+    display: block;
+    margin-left: auto;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 2.5rem;
+    max-width: 80%;
+    @include breakpoint(medium) {
+      margin-bottom: 1.5rem;
+      margin-top: 5rem;
+      max-width: 100%;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+    }
+  }
+}

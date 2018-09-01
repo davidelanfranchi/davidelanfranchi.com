@@ -1,0 +1,159 @@
+/* Cursor styles */
+
+.js-has-cursor {
+  // cursor: none !important;
+  // * {
+  //   cursor: none !important;
+  // }
+}
+
+[data-cursor-container] {
+  position: relative;
+  overflow: hidden;
+}
+
+.touch .cursor {
+  display: none;
+}
+
+.cursor {
+  pointer-events: none;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  width: 0;
+  height: 0;
+
+  opacity: 1;
+  transition: opacity 0.3s;
+
+  mix-blend-mode: difference;
+}
+.cursor[data-cursor-hiding] {
+  opacity: 0;
+}
+
+.cursor__outer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.cursor__inner {
+  width: 10em;
+  height: 10em;
+
+  transition: all 0.2s;
+  transform-origin: center center;
+
+  transform: scale(1);
+  opacity: 1;
+}
+
+.cursor__point {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: $accent_color;
+  border: 1px solid $accent_color;
+  transform: scale(0);
+  transition: all 0.4s;
+  transform-origin: center center;
+}
+
+.cursor[data-cursor-type="default"] .cursor__point {
+  transform: scale(0.05);
+}
+.cursor[data-cursor-type="default"][data-cursor-holding] .cursor__point {
+  transform: scale(0.1);
+}
+
+.cursor[data-cursor-type="main-action"] {
+  // mix-blend-mode: exclusion;
+}
+.cursor[data-cursor-type="main-action"] .cursor__point {
+  transform: scale(0.5);
+  opacity: 0.1;
+}
+.cursor[data-cursor-type="main-action"][data-cursor-holding] .cursor__point {
+  transform: scale(0.4);
+}
+
+.cursor__external-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s;
+  transform-origin: center center;
+  transform: scale(0);
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    polygon {
+      stroke: $accent_color;
+      stroke-width: 2;
+      fill: $accent_color;
+      fill: transparent;
+      // animation-name: scaleAnimation;
+      // animation-duration: 1s;
+      // animation-iteration-count: infinite;
+      // stroke-dasharray: 10 10;
+      // animation-name: dashOffsetAnimation;
+      // animation-duration: 100s;
+      // animation-iteration-count: infinite;
+    }
+  }
+}
+.cursor[data-cursor-type="on-external-link"] .cursor__external-link {
+  transform: scale(1.2);
+  opacity: 1;
+}
+.cursor[data-cursor-type="on-external-link"][data-cursor-holding]
+  .cursor__external-link {
+  transform: scale(1.4);
+}
+.cursor[data-cursor-type="on-external-link"] {
+  mix-blend-mode: normal;
+  // opacity: .2;
+}
+
+@keyframes fillAnimation {
+  0% {
+    fill: $accent_color;
+  }
+  50% {
+    fill: transparent;
+  }
+  100% {
+    fill: $accent_color;
+  }
+}
+@keyframes dashOffsetAnimation {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 1000;
+  }
+}
+@keyframes scaleAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

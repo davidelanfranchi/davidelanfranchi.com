@@ -180,4 +180,4 @@ function watch() {
 }
 
 // Deploy to GitHub Pages
-gulp.task("deploy", () => src("./dist/**/*").pipe(ghPages()));
+gulp.task("deploy", () => gulp.src("./dist/**/*").pipe(ghPages()));

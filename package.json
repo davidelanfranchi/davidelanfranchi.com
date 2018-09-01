@@ -1,11 +1,12 @@
 {
-  "name": "foundation-zurb-template",
+  "name": "davidelanfranchi.com",
   "version": "1.0.0",
-  "description": "Official ZURB Template for Foundation for Sites.",
+  "description": "Personal page.",
   "main": "gulpfile.babel.js",
   "scripts": {
     "start": "gulp",
-    "build": "gulp build --production"
+    "build": "gulp build --production",
+    "deploy": "gulp deploy"
   },
   "author": "Davide Lanfranchi <hello@davidelanfranchi.com>",
   "license": "MIT",
@@ -45,7 +46,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zurb/foundation-zurb-template.git"
+    "url": "https://github.com/davidelanfranchi/davidelanfranchi.com.git"
   },
   "babel": {
     "presets": [

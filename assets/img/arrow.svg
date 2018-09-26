@@ -1,3 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 380">
-  <polygon points="376.6,2.4 376.6,1.8 76.7,1.9 76.7,61.8 275.8,61.8 1.7,335.8 44.1,378.2 318.1,104.2 318.1,302.9 378.2,302.8 378.3,2.4 " stroke="#6cdac1" fill="rgba(0, 0, 0, 0)" stroke-width="2px"></polygon>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 380"><path stroke="#6cdac1" fill="rgba(0, 0, 0, 0)" stroke-width="2" d="M376.6 2.4v-.6l-299.9.1v59.9h199.1L1.7 335.8l42.4 42.4 274-274v198.7l60.1-.1.1-300.4z"/></svg>

@@ -265,39 +265,29 @@
 
   .profile-links {
     margin-bottom: 3.5em;
-    font-size: 0.8em;
-
+    font-size: 0.7em;
+    text-transform: uppercase;
     span {
-      // display: block;
+      opacity: 0.5;
+    }
+    .title {
+      display: block;
       margin-bottom: 1em;
       @include breakpoint(large) {
         margin-bottom: 0;
         display: inline-block;
-        margin-right: 0.6em;
+        margin-right: 1em;
       }
     }
     a {
       display: inline-block;
-      margin-right: 0.3em;
+      margin-right: 0.4em;
     }
   }
 
   .profile-picture-wrapper {
     position: relative;
-    &::before {
-      content: "";
 
-      z-index: -1;
-      position: absolute;
-      top: 0.5rem;
-      left: 0.5rem;
-
-      width: 100%;
-      height: 100%;
-
-      background-color: black;
-      opacity: 0.5;
-    }
     &::after {
       content: "";
 

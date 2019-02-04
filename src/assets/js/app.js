@@ -1,20 +1,20 @@
-import Tagline from "./components/tagline";
-import Cursor from "./components/cursor";
-import { isTouch } from "./components/helpers";
-import { isSafari } from "./components/helpers";
+import Tagline from './components/tagline';
+import Cursor from './components/cursor';
+import {isTouch} from './components/helpers';
+import {isSafari} from './components/helpers';
 
-document.body.classList.add("is-loading");
+document.body.classList.add('is-loading');
 
 if (isTouch) {
-  document.body.classList.add("touch");
+  document.body.classList.add('touch');
 } else {
-  document.body.classList.add("no-touch");
+  document.body.classList.add('no-touch');
 }
 
 if (isSafari) {
-  document.body.classList.add("safari");
+  document.body.classList.add('safari');
 } else {
-  document.body.classList.add("no-safari");
+  document.body.classList.add('no-safari');
 }
 
 const tagline = new Tagline();
@@ -34,7 +34,37 @@ const cursor = new Cursor({
 });
 cursor.init();
 
-window.addEventListener("load", () => {
-  document.body.classList.remove("is-loading");
-  document.body.classList.add("is-loaded");
+window.addEventListener('load', () => {
+  document.body.classList.remove('is-loading');
+  document.body.classList.add('is-loaded');
+});
+
+window.addEventListener('click', () => {
+  if (gtag && event.target.hasAttribute('data-gtag-outbound-link')) {
+    let target = event.target.getAttribute('data-gtag-outbound-link');
+    let url = event.target.getAttribute('href');
+    let hasMetaKey = event.metaKey;
+    if (!hasMetaKey) {
+      event.preventDefault();
+    }
+
+    gtag('event', 'click', {
+      event_category: 'outbound link',
+      event_label: target,
+      transport_type: 'beacon',
+      event_callback: function() {
+        if (!hasMetaKey) {
+          document.location = url;
+        }
+      }
+    });
+  }
+
+  if (gtag && event.target.hasAttribute('data-gtag-mailto-link')) {
+    gtag('event', 'click', {
+      event_category: 'mailto link',
+      event_label: 'personal email',
+      transport_type: 'beacon'
+    });
+  }
 });
